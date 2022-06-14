@@ -12,3 +12,13 @@ INSERT into books (title, released) VALUES
 ('Winnie the Pooh', 1984 ),
 ('Clifford the Big Red Dog', 1940),
 ('The Giving Tree', 1924);
+
+
+CREATE table authors (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL
+);
+
+INSERT into authors(name) VALUES
+('Ernest Hemingway'),
+('James Patterson');

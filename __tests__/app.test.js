@@ -22,7 +22,7 @@ describe('backend-express-template routes', () => {
   it('/authors should return a list of all authors', async () => {
     const resp = await request(app).get('/authors');
     const expected = authors.map((author) => {
-      return { id: author.id, name: author.title };
+      return { id: author.id, name: author.name };
     });
     expect(resp.body).toEqual(expected);
   });
