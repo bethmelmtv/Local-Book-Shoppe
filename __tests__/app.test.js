@@ -33,6 +33,13 @@ describe('backend-express-template routes', () => {
     expect(resp.body.name).toEqual('Ernest Hemmingway');
   });
 
+  it('POST/author should create a new author', async () => {
+    const resp = await request(app)
+      .post('/authors')
+      .send({ name: 'Harriet', bookId: [1] });
+    expect(resp.body.name).toBe('Harriet');
+  });
+
   afterAll(() => {
     pool.end();
   });
