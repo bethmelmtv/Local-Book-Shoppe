@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 const { books } = require('../data/books');
+const { authors } = require('../data/authors');
 
 describe('backend-express-template routes', () => {
   beforeEach(() => {
@@ -14,6 +15,14 @@ describe('backend-express-template routes', () => {
     const resp = await request(app).get('/books');
     const expected = books.map((book) => {
       return { id: book.id, title: book.title, released: book.released };
+    });
+    expect(resp.body).toEqual(expected);
+  });
+
+  it('/authors should return a list of all authors', async () => {
+    const resp = await request(app).get('/authors');
+    const expected = authors.map((author) => {
+      return { id: author.id, name: author.title };
     });
     expect(resp.body).toEqual(expected);
   });
