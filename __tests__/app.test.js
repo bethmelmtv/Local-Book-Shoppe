@@ -27,6 +27,12 @@ describe('backend-express-template routes', () => {
     expect(resp.body).toEqual(expected);
   });
 
+  it('/authors/:id should return author detail with books', async () => {
+    const resp = await request(app).get('/authors/1');
+    expect(resp.body.id).toEqual('1');
+    expect(resp.body.name).toEqual('Ernest');
+  });
+
   afterAll(() => {
     pool.end();
   });
