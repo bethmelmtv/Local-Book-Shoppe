@@ -41,6 +41,14 @@ describe('backend-express-template routes', () => {
     expect(resp.body.name).toBe('Harriet');
   });
 
+  it('POST/book should create a new book', async () => {
+    const resp = await request(app)
+      .post('/books')
+      .send({ title: 'Little Red Riding Hood', authorId: [1] });
+    console.log(resp);
+    expect(resp.body.name).toBe('Harriet');
+  });
+
   afterAll(() => {
     pool.end();
   });
