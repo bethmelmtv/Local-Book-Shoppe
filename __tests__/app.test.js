@@ -37,6 +37,7 @@ describe('backend-express-template routes', () => {
     const resp = await request(app)
       .post('/authors')
       .send({ name: 'Harriet', bookId: [1] });
+    console.log(resp);
     expect(resp.body.name).toBe('Harriet');
   });
 
