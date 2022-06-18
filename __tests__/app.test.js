@@ -44,14 +44,23 @@ describe('backend-express-template routes', () => {
   it('POST/book should create a new book', async () => {
     const resp = await request(app)
       .post('/books')
-      .send({ title: 'Little Red Riding Hood', authorId: [1] });
+      .send({ title: 'Little Red Riding Hood', released: 1993 });
     console.log(resp);
-    expect(resp.body.name).toBe('Harriet');
+    expect(resp.body.title).toBe('Little Red Riding Hood');
+  });
+
+  it('/books/:id return the book detail', async () => {
+    const resp = await request(app).get('/books/1');
+    console.log(resp.body);
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toEqual({
+      id: '1',
+      title: 'Winnie the Pooh',
+      released: 1984,
+    });
   });
 
   afterAll(() => {
     pool.end();
   });
 });
-
-//need to do GET /books/:id//

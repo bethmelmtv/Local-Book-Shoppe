@@ -12,7 +12,7 @@ CREATE table books (
 );
 
 INSERT into books (title, released) VALUES
-('Winnie the Pooh', 1984 ),
+('Winnie the Pooh', 1984),
 ('Clifford the Big Red Dog', 1940),
 ('The Giving Tree', 1924);
 
